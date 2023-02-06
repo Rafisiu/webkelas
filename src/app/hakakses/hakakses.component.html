@@ -1,0 +1,17 @@
+<p>hakakses works!</p>
+<a routerLink="/add-hak" class="btn btn-warning">Tambah</a>
+<table class="table table-bordered table-responsive">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAMA HAK AKSES</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of hakList">
+    <td>{{p.id}}</td>
+    <td>{{p.namaHak}}</td>
+    <td><a routerLink="/edit-hak/{{p.id}}" class="btn btn-warning">Edit</a></td>
+  </tr>
+  </tbody>
+</table>

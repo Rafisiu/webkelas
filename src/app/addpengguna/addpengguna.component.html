@@ -1,0 +1,29 @@
+<form [formGroup]="formpengguna">
+  <div class="mb-3">
+    <label class="form-label">Nama Pengguna</label>
+    <input type="email" class="form-control" formControlName="namaPengguna">
+    <span *ngIf="!formpengguna.get('namaPengguna')?.valid && formpengguna.get('namaPengguna')?.touched" class="error-block">
+      <span *ngIf="formpengguna.get('namaPengguna')?.errors?.['minlength']">
+        Nama Pengguna minimal 3 karakter !
+      </span>
+      <span *ngIf="formpengguna.get('namaPengguna')?.errors?.['required']">
+        Nama Pengguna wajib diisi !
+      </span>
+    </span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email">
+    <span *ngIf="!formpengguna.get('email')?.valid && formpengguna.get('email')?.touched" class="error-block">
+      <span *ngIf="formpengguna.get('email')?.errors?.['email']">
+        Harus dalam format email !
+      </span>
+      <span *ngIf="formpengguna.get('email')?.errors?.['required']">
+        Email wajib diisi !
+      </span>
+    </span>
+    <div class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+  <button type="submit" (click)="simpan()" class="btn btn-primary">Submit</button>
+</form>

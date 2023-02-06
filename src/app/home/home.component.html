@@ -1,0 +1,21 @@
+<p>home works!</p>
+<a routerLink="/add-pengguna" class="btn btn-warning">Tambah</a>
+<a routerLink="/hak" class="btn btn-warning">Menuju Hak Akses</a>
+<table class="table table-bordered table-responsive">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAMA</th>
+    <th>EMAIL</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of penggunaList">
+      <td>{{p.id}}</td>
+      <td>{{p.namaPengguna}}</td>
+      <td>{{p.email}}</td>
+      <td><a routerLink="/edit-pengguna/{{p.id}}" class="btn btn-warning">Edit</a></td>
+    </tr>
+  </tbody>
+</table>
+

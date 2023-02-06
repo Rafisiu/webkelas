@@ -1,0 +1,16 @@
+<form [formGroup]="formhak">
+  <div class="mb-3">
+    <label class="form-label">Nama Hak Akses</label>
+    <input type="email" class="form-control" formControlName="namaHak">
+    <span *ngIf="!formhak.get('namaHak')?.valid && formhak.get('namaHak')?.touched" class="error-block">
+      <span *ngIf="formhak.get('namaHak')?.errors?.['minlength']">
+        Nama Hak Akses minimal 3 karakter !
+      </span>
+      <span *ngIf="formhak.get('namaHak')?.errors?.['required']">
+        Nama Hak Akses wajib diisi !
+      </span>
+    </span>
+  </div>
+
+  <button type="submit" (click)="simpan()" class="btn btn-primary">Submit</button>
+</form>

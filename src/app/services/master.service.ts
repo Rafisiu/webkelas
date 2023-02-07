@@ -4,6 +4,7 @@ import {map, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Pengguna} from "../models/Pengguna";
 import {Hak} from "../models/Hak";
+import {Page} from "../models/Page";
 
 
 
@@ -16,6 +17,16 @@ export class MasterService {
 
   listPengguna(): Observable<any>{
     return this.http.get(environment.baseUrl+"/listpengguna").pipe(map(data=>data))
+  }
+
+  listPenggunaPaging(page: Page): Observable<any>{
+    return this.http.post(environment.baseUrl+"/listpenggunapaging",page)
+      .pipe(map(data=>data))
+  }
+
+  listHakPaging(page: Page): Observable<any>{
+    return this.http.post(environment.baseUrl+"/listhakpaging",page)
+      .pipe(map(data=>data))
   }
 
   getPengguna(id:number): Observable<any>{

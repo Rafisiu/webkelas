@@ -14,14 +14,16 @@ export class AddpenggunaComponent implements OnInit{
   id!:number
 
   formpengguna!: FormGroup
+
+  pesanKesalahan!: String
   constructor(private  formBuild: FormBuilder,
               private ms: MasterService,
               private router: Router,
               private  route: ActivatedRoute
               ) {
     this.formpengguna = this.formBuild.group({
-      'namaPengguna': [null, [Validators.required,Validators.minLength(3)]],
-      'email': [null, [Validators.required,Validators.email]]
+      'namaPengguna': [null, /*[Validators.required,Validators.minLength(3)]*/],
+      'email': [null,/*[Validators.required,Validators.email]*/]
     })
   }
 
@@ -53,9 +55,16 @@ export class AddpenggunaComponent implements OnInit{
         next: (hasil) =>{
           console.log(hasil)
           alert(hasil.status)
+          this.router.navigate([""])
         },
         error: err =>{
-          console.log(err)
+          if (err.error.errors && err.error.errors.length > 0){
+            let pesanSalah = "";
+            for (let i = 0; i < err.error.errors.length; i++){
+              pesanSalah += err.error.errors[i].field + " : "+err.error.errors[i].defaultMessage+" <br/>"
+            }
+            this.pesanKesalahan = pesanSalah
+          }
         }
       })
     }

@@ -1,4 +1,20 @@
-<p>home works!</p>
+<div class="card-body">
+  <div class="row">
+    <div class="card-body">
+      <form [formGroup]="formCari">
+        <div class="form-floating mb-3">
+          <input class="form-control"
+                  formControlName="nama"
+                  placeholder="pencarian nama" />
+        </div>
+        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+          <button class="btn btn-primary" type="submit" (click)="getCariPengguna()">Cari disini!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<p>&nbsp;</p>
 <a routerLink="/add-pengguna" class="btn btn-warning">Tambah</a>
 <a routerLink="/hak" class="btn btn-warning">Menuju Hak Akses</a>
 <table class="table table-bordered table-responsive">
@@ -10,12 +26,26 @@
   </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of penggunaList">
+    <tr *ngFor="let p of penggunaList | paginate: {itemsPerPage: page.size, currentPage: page.pageNumber, totalItems: page.totalElements}">
       <td>{{p.id}}</td>
       <td>{{p.namaPengguna}}</td>
       <td>{{p.email}}</td>
       <td><a routerLink="/edit-pengguna/{{p.id}}" class="btn btn-warning">Edit</a></td>
     </tr>
   </tbody>
+  <tfoot>
+  <div class="row">
+    <div class="card-body">
+      <form [formGroup]="formHalaman">
+        <select formControlName="size" class="form-select" (change)="sizeChange()">
+          <option *ngFor="let s of jumlahPerPage" [value]="s" >
+            {{s}}
+          </option>
+        </select>
+      </form>
+    </div>
+  </div>
+  </tfoot>
 </table>
+<pagination-controls class="pagination pagination-sm float-sm-end" (pageChange)="pageChangeEvent($event)"></pagination-controls>
 

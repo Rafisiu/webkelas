@@ -10,6 +10,7 @@ import { AddpenggunaComponent } from './addpengguna/addpengguna.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddhakaksesComponent } from './addhakakses/addhakakses.component';
 import { HakaksesComponent } from './hakakses/hakakses.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { HakaksesComponent } from './hakakses/hakakses.component';
     AddhakaksesComponent,
     HakaksesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxPaginationModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
